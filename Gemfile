@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'ransack'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
@@ -18,7 +18,6 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
-gem 'searchkick'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
