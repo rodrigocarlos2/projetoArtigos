@@ -12,6 +12,7 @@ class FoldersController < ApplicationController
   # GET /folders/1.json
   def show
     @examples = Example.where(folder_id: params[:id])
+    @examples = @examples.paginate(:page => params[:page], :per_page => 1)
   end
 
   # GET /folders/new

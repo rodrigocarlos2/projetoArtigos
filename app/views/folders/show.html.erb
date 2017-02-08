@@ -1,19 +1,36 @@
-<p id="notice"><%= notice %></p>
- <%= link_to 'Novo Artigo', new_example_path, class: "btn btn-success" %>
-<p>
-  <strong>Name:</strong>
+
+ 
+<h1>
+  <strong>Pasta</strong>
   <%= @folder.name %>
-</p>
+</h1>
+<br/>
+<%= link_to 'Novo Artigo', new_example_path, class: "btn btn-success" %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Pasta</th>
+      <th>Privado</th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>User:</strong>
-  <%= @folder.user.email %>
-</p>
-<% @examples.each do |example| %>
-	<ul>
-		<li><%= link_to example.name, example_path(example) %></li>
-	</ul>
-<%end%>
+  <tbody>
+    <% @examples.each do |example| %>
+      <div class="link_too"    
+      <tr>
+        <td class="td-index"><%= link_to example.name, example %></td>
+        <td><%= example.folder.name %></td>
+        <td><%= example.private %></td>
+      </tr>
+      
+      </div>
+    <% end %>
+    <br>
+  </tbody>
+</table>
+<%= will_paginate @examples, renderer: BootstrapPagination::Rails %>
+<br>
+<%= link_to 'Edit', edit_folder_path(@folder), class: "btn btn-warning" %> 
+<%= link_to 'Back', folders_path, class: "btn btn-default" %>
 
-<%= link_to 'Edit', edit_folder_path(@folder) %> |
-<%= link_to 'Back', folders_path %>

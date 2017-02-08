@@ -16,7 +16,7 @@
       <tr>
         <td><%= folder.name %></td>
         <td><%= folder.user.email %></td>
-        <td> <%= link_to folders_path, class: "btn btn-primary" do %>
+        <td> <%= link_to folder_path(folder), class: "btn btn-primary" do %>
              <i class="glyphicon glyphicon-file"></i> Artigos <% end %>
         </td>
         <td><%= link_to edit_folder_path(folder), class: "btn btn-warning" do %>
