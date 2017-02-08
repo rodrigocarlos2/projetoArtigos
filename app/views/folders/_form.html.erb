@@ -1,0 +1,26 @@
+<div class="row">
+<div class="col-sm-5">
+<%= form_for(@folder) do |f| %>
+  <% if @folder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@folder.errors.count, "error") %> prohibited this folder from being saved:</h2>
+
+      <ul>
+      <% @folder.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %><br>
+    <%= f.text_field :name , class: "form-control"%>
+  </div>
+  
+  
+    <%= f.submit value: "",class: "btn btn-success"%>
+  
+<% end %>
+</div>
+</div>

@@ -1,0 +1,29 @@
+# encoding: UTF-8
+# pt-BR translations for Devise
+pt-BR:
+    activerecord:
+        models:
+            example: Artigos
+            folder: Pastas
+            user: Usuarios 
+        attributes:
+            example:
+                name: Nome
+                my_file: Arquivo
+                created_at: Criado em
+                updated_at: Atualizado em
+                folder_id: Pasta
+                private: Privado
+            folder:
+                name: Nome
+                user_id: Usuario
+                created_at: Criado em
+                updated_at: Atualizado em
+            user:
+                email: Email
+                password: Senha
+                password_confirmation: Confirmação de senha
+                current_password: Senha atual
+                user_group_id: Cargo
+                created_at: Criado em
+                updated_at: Atualizado em

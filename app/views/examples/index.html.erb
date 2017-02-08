@@ -1,0 +1,38 @@
+<div class="row">
+<div class="page-header">
+<h1 class="titulo">Lista de Artigos</h1>
+</div>
+
+  <%= link_to 'Novo Artigo', new_example_path, class: "btn btn-success" %>
+  <%= link_to 'Pastas', folders_path, class: "btn btn-primary" %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Pasta</th>
+      <th>Privado</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @examples.each do |example| %>
+      <div class="link_too"    
+      <tr>
+        <td class="td-index"><%= link_to example.name, example %></td>
+        <td><%= example.folder.name %></td>
+        <td><%= example.private %></td>
+      </tr>
+      
+      </div>
+    <% end %>
+    <br>
+  </tbody>
+</table>
+
+<br>
+
+<%= will_paginate @examples, renderer: BootstrapPagination::Rails %>
+</div>
+
+
+

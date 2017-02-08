@@ -1,0 +1,12 @@
+pt-BR:
+   models_and_attibutes:
+    attributes:
+    customer:
+    
+    
+pt-BR:
+   helpers:
+    submit:
+     customer:        
+     create: 'Criar'
+   

@@ -1,0 +1,116 @@
+/*
+body {
+  padding-top: 5%;
+  padding-left: 10%;
+  background-color: #fff;
+  color: #333;
+  font-family: verdana;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+
+p, ol, ul, td {
+  
+  font-size: 18px;
+  line-height: 18px;
+  font-weight: bold;
+}
+
+.td-index {
+  padding-left: 10px;
+  padding: 10px;
+  text-transform: uppercase;
+  
+}
+
+.alinhar {
+  text-align: right;
+}
+
+td {
+  color: #03507B;
+}
+
+th {
+  visibility: hidden;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.titulo {
+  color: black;
+  font-weight: bold;
+  padding-left: 10px;
+  border-bottom: 1px solid DarkSlateGrey;
+}
+
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  
+  &:visited {
+    color: #258efe;
+  }
+
+  &:hover {
+    color: #0188ef;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+
+
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+*/
+.navbar-fixed-top {
+  margin-bottom: 19px  !important;
+}
+
+@import "bootstrap"
+
+
