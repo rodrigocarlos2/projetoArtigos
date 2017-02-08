@@ -21,7 +21,7 @@
       <tr>
         <td class="td-index"><%= link_to example.name, example %></td>
         <td><%= example.folder.name %></td>
-        <td><%= example.private %></td>
+        <td><% if example.private  %> Sim <%else %> Não <% end %></td>
       </tr>
       
       </div>
@@ -31,6 +31,6 @@
 </table>
 <%= will_paginate @examples, renderer: BootstrapPagination::Rails %>
 <br>
-<%= link_to 'Edit', edit_folder_path(@folder), class: "btn btn-warning" %> 
-<%= link_to 'Back', folders_path, class: "btn btn-default" %>
+
+<%= link_to 'Voltar', folders_path, class: "btn btn-default" %>
 
