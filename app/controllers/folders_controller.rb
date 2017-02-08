@@ -5,13 +5,17 @@ class FoldersController < ApplicationController
   # GET /folders
   # GET /folders.json
   def index
-    @folders = Folder.where(user_id: current_user.id)
+    @q = Folder.ransack(params[:q])
+    @folders = @q.result
+    @folders = @folders.where(user_id: current_user.id)
   end
 
   # GET /folders/1
   # GET /folders/1.json
   def show
-    @examples = Example.where(folder_id: params[:id])
+    @q = Example.ransack(params[:q])
+    @examples = @q.result
+    @examples = @examples.where(folder_id: params[:id])
     @examples = @examples.paginate(:page => params[:page], :per_page => 1)
   end
 
