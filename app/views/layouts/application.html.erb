@@ -41,23 +41,22 @@
       
       <ul class="nav navbar-nav navbar-right">
         <form class="navbar-form navbar-left">
-      
-        <% if current_page?(examples_path) or current_page?(folders_path) or current_page?(folder_path) %>
 
           <%# Campo de Busca Ransack %>
-          <%= search_form_for @q do |f| %>
+          <% if !@q.nil? %>
+          
+            <%= search_form_for @q do |f| %>
+            
+              <%= f.search_field :name_cont %>
 
-            <%= f.label :name_cont %>
-            <%= f.search_field :name_cont %>
+              <%= f.submit %>
 
-            <%= f.submit %>
+            <% end %>
 
           <% end %>
 
-        <% end %>
-
-
         </form>
+        
         <% if user_signed_in? %>
         
           <li><%= link_to edit_user_registration_path  do %>
