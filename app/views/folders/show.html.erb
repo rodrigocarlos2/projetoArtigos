@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+ <%= link_to 'Novo Artigo', new_example_path, class: "btn btn-success" %>
 <p>
   <strong>Name:</strong>
   <%= @folder.name %>
@@ -9,6 +9,11 @@
   <strong>User:</strong>
   <%= @folder.user.email %>
 </p>
+<% @examples.each do |example| %>
+	<ul>
+		<li><%= link_to example.name, example_path(example) %></li>
+	</ul>
+<%end%>
 
 <%= link_to 'Edit', edit_folder_path(@folder) %> |
 <%= link_to 'Back', folders_path %>

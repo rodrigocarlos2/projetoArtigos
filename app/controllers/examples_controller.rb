@@ -8,8 +8,8 @@ class ExamplesController < ApplicationController
     # Verifica se o usuário entrou com keywords
     if params[:keywords].present?
       # Diz ao elastickick para pesquisar as keyrwords nos campos name e description
-      @examples = Example.search params[:keywords], fields: [:name]
-      
+      @examples = Example.search(params[:keywords],fields: [:name], track: true)
+
     end
     @examples = Example.paginate(:page => params[:page], :per_page => 20)
   end
