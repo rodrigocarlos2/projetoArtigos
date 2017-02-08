@@ -45,7 +45,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <form class="navbar-form navbar-left">
-<<<<<<< HEAD
+
         <div class="form-group">
         <% if !@q.nil? %>
 
@@ -56,28 +56,16 @@
             <%= f.search_field :name_cont, class: "form-control" %>
 
             <%= f.submit value:"Buscar",class: "btn btn-default"%>
-=======
 
-          <%# Campo de Busca Ransack %>
-          <% if !@q.nil? %>
-          
-            <%= search_form_for @q do |f| %>
-
-              <%= f.search_field :name_cont, class: "form-group" %>
->>>>>>> 2c94fae05833f313170b1a898d7a593a30d924b6
-
-              <%= f.submit value:"Buscar", class: "form-group" %>
-
-            <% end %>
-
+          <% end %>
           <% end %>
 
         </form>
-<<<<<<< HEAD
+
         </div>
-=======
+
         
->>>>>>> 2c94fae05833f313170b1a898d7a593a30d924b6
+
         <% if user_signed_in? %>
         
           <li><%= link_to edit_user_registration_path  do %>

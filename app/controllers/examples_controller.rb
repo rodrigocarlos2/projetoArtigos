@@ -6,7 +6,7 @@ class ExamplesController < ApplicationController
   # GET /examples.json
   def index
     @q = Example.ransack(params[:q])
-    @examples = @q.result
+    @examples = @q.result.where(private: false)
     @examples = @examples.paginate(:page => params[:page], :per_page => 20)
   end
 
