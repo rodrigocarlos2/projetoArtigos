@@ -41,16 +41,16 @@
       
       <ul class="nav navbar-nav navbar-right">
         <form class="navbar-form navbar-left">
-      
-        <% if current_page?(examples_path) or current_page?(folders_path) or current_page?(folder_path) %>
+        <div class="form-group">
+        <% if !@q.nil? %>
 
           <%# Campo de Busca Ransack %>
           <%= search_form_for @q do |f| %>
 
-            <%= f.label :name_cont %>
-            <%= f.search_field :name_cont %>
+            
+            <%= f.search_field :name_cont, class: "form-control" %>
 
-            <%= f.submit %>
+            <%= f.submit value:"Buscar",class: "btn btn-default"%>
 
           <% end %>
 
@@ -58,6 +58,7 @@
 
 
         </form>
+        </div>
         <% if user_signed_in? %>
         
           <li><%= link_to edit_user_registration_path  do %>

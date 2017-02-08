@@ -1,18 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<h2>
   <strong>Nome:</strong>
   <%= @example.name %>
-</p>
+</h2>
 
 
-<table>
-  <tr>
-    <td><a href="<%= @example.my_file %>">Exibir Arquivo</a></td>
-    
-  </tr>
-</table>
-
-<%= link_to 'Editar', edit_example_path(@example) %> |
-<%= link_to 'Voltar', examples_path %> |
-<%= link_to 'Delete', example_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <a href="<%= @example.my_file %>" class="btn btn-info">Exibir Arquivo</a>
+<%= link_to 'Editar', edit_example_path(@example) , class: "btn btn-warning"%> 
+<%= link_to 'Voltar', examples_path , class: "btn btn-default"%> 
+<%= link_to 'Excluir', example_path, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger"%>

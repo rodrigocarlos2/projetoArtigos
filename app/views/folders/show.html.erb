@@ -21,7 +21,8 @@
       <tr>
         <td class="td-index"><%= link_to example.name, example %></td>
         <td><%= example.folder.name %></td>
-        <td><% if example.private  %> Sim <%else %> Não <% end %></td>
+        <td><% if example.private?  %> Sim <%else %> Não <% end %></td>
+        
       </tr>
       
       </div>
