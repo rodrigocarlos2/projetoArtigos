@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MyApp</title>
+  <title> Artigos </title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -24,11 +24,17 @@
       <% if user_signed_in? %>
       <ul class="nav navbar-nav">
         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-folder-open"></i> Artigos <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Novo', new_example_path %></li>
+            <li><%= link_to 'Listar', examples_path %></li>
+          </ul>
+        </li>
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-folder-open"></i> Pastas <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to 'Nova', new_folder_path %></li>
             <li><%= link_to 'Listar', folders_path %></li>
-            
           </ul>
         </li>
       </ul>
@@ -37,10 +43,9 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-      
       <ul class="nav navbar-nav navbar-right">
         <form class="navbar-form navbar-left">
+<<<<<<< HEAD
         <div class="form-group">
         <% if !@q.nil? %>
 
@@ -51,14 +56,28 @@
             <%= f.search_field :name_cont, class: "form-control" %>
 
             <%= f.submit value:"Buscar",class: "btn btn-default"%>
+=======
+
+          <%# Campo de Busca Ransack %>
+          <% if !@q.nil? %>
+          
+            <%= search_form_for @q do |f| %>
+
+              <%= f.search_field :name_cont, class: "form-group" %>
+>>>>>>> 2c94fae05833f313170b1a898d7a593a30d924b6
+
+              <%= f.submit value:"Buscar", class: "form-group" %>
+
+            <% end %>
 
           <% end %>
 
-        <% end %>
-
-
         </form>
+<<<<<<< HEAD
         </div>
+=======
+        
+>>>>>>> 2c94fae05833f313170b1a898d7a593a30d924b6
         <% if user_signed_in? %>
         
           <li><%= link_to edit_user_registration_path  do %>
