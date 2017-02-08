@@ -8,6 +8,7 @@ class FoldersController < ApplicationController
     @q = Folder.ransack(params[:q])
     @folders = @q.result
     @folders = @folders.where(user_id: current_user.id)
+    @folders = @folders.paginate(:page => params[:page], :per_page => 1)
   end
 
   # GET /folders/1

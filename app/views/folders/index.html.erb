@@ -29,7 +29,7 @@
     <% end %>
   </tbody>
 </table>
-
+<%= will_paginate @folders, renderer: BootstrapPagination::Rails %>
 <br>
 
 <%= link_to new_folder_path, class: "btn btn-success" do %>
