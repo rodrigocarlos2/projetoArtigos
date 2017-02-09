@@ -7,6 +7,8 @@
 
 
     <a href="<%= @example.my_file %>" class="btn btn-info">Exibir Arquivo</a>
-<%= link_to 'Editar', edit_example_path(@example) , class: "btn btn-warning"%> 
-<%= link_to 'Voltar', examples_path , class: "btn btn-default"%> 
-<%= link_to 'Excluir', example_path, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger"%>
+    <% if @example.folder.user_id == current_user.id %>
+	<%= link_to 'Editar', edit_example_path(@example) , class: "btn btn-warning"%> 
+	<%= link_to 'Excluir', example_path, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger"%>
+	<% end %>
+	

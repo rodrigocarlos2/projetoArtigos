@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   #Rota para criar novo arquivo na pasta determinada
   get 'examples/novo/:id' => 'examples#new', as: :new_exemples_folder
+  get 'folder_users/inicio/:id' => 'folder_users#index', as: :index_folder_user
+  get 'folder_users/new/novo/:id' => 'folder_users#new', as: :new_user_folder_share
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

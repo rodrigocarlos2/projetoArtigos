@@ -1,10 +1,15 @@
 class FolderUsersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_folder_user, only: [:show, :edit, :update, :destroy]
 
   # GET /folder_users
   # GET /folder_users.json
   def index
-    @folder_users = FolderUser.all
+      #Pega todos os usuarios da pasta
+      @folder_users = FolderUser.where(folder_id: params[:id])
+      #Pega o nome da pasta
+      @folder = Folder.where(id: params[:id]).first
+
   end
 
   # GET /folder_users/1
@@ -14,8 +19,8 @@ class FolderUsersController < ApplicationController
 
   # GET /folder_users/new
   def new
-    @folder_user = FolderUser.new
-    
+    #Pega a pasta que deve ser inserida no compartilhamento
+    @folder_id = params[:id]
   end
 
   # GET /folder_users/1/edit
@@ -25,21 +30,28 @@ class FolderUsersController < ApplicationController
   # POST /folder_users
   # POST /folder_users.json
   def create
-    if !params[:user][:email].nil?
+    
       @folder_user = FolderUser.new
-      
       @user = User.where(email: params[:user][:email])
-      @folder_user.user_id = @user.id
+      
       @folder_user.folder_id = params[:folder_id]
-    end
 
     respond_to do |format|
-      if @folder_user.save
-        format.html { redirect_to folders_url, notice: 'Folder user was successfully created.' }
-        format.json { render :show, status: :created, location: @folder_user }
+      if @folder_user.user_id==current_user.id
+        format.html { redirect_to folders_url, alert: 'Você digitou seu proprio E-mail.' }
       else
-        format.html { render :new }
-        format.json { render json: folders_url, status: :unprocessable_entity }
+        if @user.empty?
+          format.html { redirect_to folders_url, alert: 'Email não existe.' }
+        else
+          @folder_user.user_id = @user.first.id
+          if @folder_user.save
+            format.html { redirect_to folders_url, notice: 'Operação realizada com sucesso.' }
+            format.json { render :show, status: :created, location: @folder_user }
+          else
+            format.html { render :new }
+            format.json { render json: folders_url, status: :unprocessable_entity }
+          end
+        end
       end
     end
   end
@@ -49,11 +61,11 @@ class FolderUsersController < ApplicationController
   def update
     respond_to do |format|
       if @folder_user.update(folder_user_params)
-        format.html { redirect_to @folder_user, notice: 'Folder user was successfully updated.' }
+        format.html { redirect_to folders_url, notice: 'Operação realizada com sucesso.' }
         format.json { render :show, status: :ok, location: @folder_user }
       else
         format.html { render :edit }
-        format.json { render json: @folder_user.errors, status: :unprocessable_entity }
+        format.json { render json: folders_url, status: :unprocessable_entity }
       end
     end
   end
@@ -63,7 +75,7 @@ class FolderUsersController < ApplicationController
   def destroy
     @folder_user.destroy
     respond_to do |format|
-      format.html { redirect_to folder_users_url, notice: 'Folder user was successfully destroyed.' }
+      format.html { redirect_to folders_url, notice: 'Operação realizada com sucesso.' }
       format.json { head :no_content }
     end
   end

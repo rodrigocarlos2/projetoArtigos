@@ -1,8 +1,13 @@
 <h1>Minhas pastas</h1>
-
+<%= link_to new_folder_path, class: "btn btn-success" do %>
+<i class="glyphicon glyphicon-folder-open"></i> Nova pasta<% end %>
+<br/>
+<br/>
 <table class="table">
+
   <thead>
     <tr>
+      <th>#</th>
       <th>Name</th>
       <th>User</th>
       <th colspan="4">Ações</th>
@@ -12,6 +17,7 @@
   <tbody>
     <% @folders.each do |folder| %>
       <tr>
+        <td><%= folder.id %></td>
         <td><%= folder.name %></td>
         <td><%= folder.user.email %></td>
         <td> <%= link_to folder_path(folder), class: "btn btn-primary" do %>
@@ -23,7 +29,7 @@
         <td><%= link_to folder, method: :delete , data: { confirm: 'Are you sure?' }, class: "btn btn-danger" do %>
              <i class="glyphicon glyphicon-remove"></i> Excluir <% end %>
         </td>
-        <td><%= link_to folder_users_path, class: "btn btn-info" do %>
+        <td><%= link_to index_folder_user_path(folder), class: "btn btn-info" do %>
              <i class="glyphicon glyphicon-share"></i> Compartilhar <% end %>        
         </td>
       </tr>
@@ -36,6 +42,37 @@
 <%= will_paginate @folders, renderer: BootstrapPagination::Rails %>
 <br>
 
-<%= link_to new_folder_path, class: "btn btn-success" do %>
-<i class="glyphicon glyphicon-folder-open"></i> Nova pasta<% end %>
+<h1>Pastas compartilhadas</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>User</th>
+      <th>Artigos</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @folder_users.each do |f| %>
+      <tr>
+        <td><%= f.folder.id %></td>
+        <td><%= f.folder.name %></td>
+        <td><%= f.folder.user.email %></td>
+        <td> <%= link_to folder_path(f.folder), class: "btn btn-primary" do %>
+             <i class="glyphicon glyphicon-file"></i> Artigos <% end %>
+        </td>
+        
+      </tr>
+
+      
+
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @folder_users, renderer: BootstrapPagination::Rails %>
+<br>
+
+
 

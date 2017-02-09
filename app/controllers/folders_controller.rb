@@ -13,6 +13,12 @@ class FoldersController < ApplicationController
     @folders = @folders.where(user_id: current_user.id)
     #Utilização do will_paginate
     @folders = @folders.paginate(:page => params[:page], :per_page => 20)
+
+    #Pega as pastas compartilhadas que pertencem ao usuario logado
+    @folder_users = FolderUser.where(user_id: current_user.id)
+    #Utilização do will_paginate
+    @folder_users = @folder_users.paginate(:page => params[:page], :per_page => 20)
+
   end
 
   # GET /folders/1
