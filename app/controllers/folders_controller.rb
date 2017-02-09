@@ -26,6 +26,8 @@ class FoldersController < ApplicationController
     @examples = @examples.where(folder_id: params[:id])
     #Utilização do will_paginate
     @examples = @examples.paginate(:page => params[:page], :per_page => 20)
+
+    @folder_users = FolderUser.new
   end
 
   # GET /folders/new
@@ -41,6 +43,7 @@ class FoldersController < ApplicationController
   # POST /folders.json
   def create
     @folder = Folder.new(folder_params)
+    #Adiciona na pasta o usuarios dono
     @folder.user_id = current_user.id;
 
     respond_to do |format|

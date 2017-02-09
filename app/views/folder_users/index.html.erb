@@ -15,7 +15,7 @@
     <% @folder_users.each do |folder_user| %>
       <tr>
         <td><%= folder_user.folder.name %></td>
-        <td><%= folder_user.user.email %></td>
+        <td><%= folder_user.user_id %></td>
         <td><%= link_to 'Show', folder_user %></td>
         <td><%= link_to 'Edit', edit_folder_user_path(folder_user) %></td>
         <td><%= link_to 'Destroy', folder_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>

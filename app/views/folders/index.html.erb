@@ -32,12 +32,14 @@
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <h2>Adicionar E-mails</h2>
-            <%= form_for(folder) do |f| %>
-            <div class="form-group">
-            <%= f.text_field :name, class: "form-control"%>
-            </div>
-            <%= f.submit class:"btn btn-success"%>
-            <%end%>
+            <%= form_tag("/folder_users", method: "post") do %>
+            
+            <%= email_field(:user,:email) %>
+            <%= hidden_field_tag(:folder_id,folder.id) %>
+            <%= submit_tag("Adicionar") %>
+            <% end %>
+            
+            
           </div>
         </div>
       </div>

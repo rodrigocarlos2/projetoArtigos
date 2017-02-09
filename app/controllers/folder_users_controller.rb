@@ -15,6 +15,7 @@ class FolderUsersController < ApplicationController
   # GET /folder_users/new
   def new
     @folder_user = FolderUser.new
+    
   end
 
   # GET /folder_users/1/edit
@@ -24,15 +25,20 @@ class FolderUsersController < ApplicationController
   # POST /folder_users
   # POST /folder_users.json
   def create
-    @folder_user = FolderUser.new(folder_user_params)
+    @folder_user = FolderUser.new
+    user = params['user']
+    @user = User.where(:email => user['email'])
+    @folder_user.user_id = @user.id
+    @folder_user.folder_id = params[:folder_id]
+
 
     respond_to do |format|
       if @folder_user.save
-        format.html { redirect_to @folder_user, notice: 'Folder user was successfully created.' }
+        format.html { redirect_to folders_url, notice: 'Folder user was successfully created.' }
         format.json { render :show, status: :created, location: @folder_user }
       else
         format.html { render :new }
-        format.json { render json: @folder_user.errors, status: :unprocessable_entity }
+        format.json { render json: folders_url, status: :unprocessable_entity }
       end
     end
   end
