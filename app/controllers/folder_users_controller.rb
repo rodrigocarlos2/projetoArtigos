@@ -25,12 +25,13 @@ class FolderUsersController < ApplicationController
   # POST /folder_users
   # POST /folder_users.json
   def create
-    @folder_user = FolderUser.new
-    user = params['user']
-    @user = User.where(:email => user['email'])
-    @folder_user.user_id = @user.id
-    @folder_user.folder_id = params[:folder_id]
-
+    if !params[:user][:email].nil?
+      @folder_user = FolderUser.new
+      
+      @user = User.where(email: params[:user][:email])
+      @folder_user.user_id = @user.id
+      @folder_user.folder_id = params[:folder_id]
+    end
 
     respond_to do |format|
       if @folder_user.save
