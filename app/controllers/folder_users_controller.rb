@@ -33,8 +33,8 @@ class FolderUsersController < ApplicationController
     
       @folder_user = FolderUser.new
       @user = User.where(email: params[:user][:email])
-      
       @folder_user.folder_id = params[:folder_id]
+
 
     respond_to do |format|
       if @folder_user.user_id==current_user.id

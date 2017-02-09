@@ -5,9 +5,18 @@ class ExamplesController < ApplicationController
   # GET /examples
   # GET /examples.json
   def index
+    
     @q = Example.ransack(params[:q])
-    @examples = @q.result.where(private: false)
-    @examples = @examples.paginate(:page => params[:page], :per_page => 20)
+
+    @examples_public = @q.result.where(private: false)
+    @examples_public = @examples_public.paginate(:page => params[:page], :per_page => 20)
+
+    user_id = current_user.id
+
+    @q = Example.ransack(params[:q])
+    @example_privates = @q.result.where(private: true)
+    @example_privates = @example_privates.paginate(:page => params[:page], :per_page => 20)
+    
   end
 
   # GET /examples/1

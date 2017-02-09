@@ -1,10 +1,50 @@
 <div class="row">
-<div class="page-header">
-<h1 class="titulo">Artigos Públicos</h1>
+<ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#sectionA">Artigos publicos</a></li>
+        <li><a data-toggle="tab" href="#sectionB">Artigos privados</a></li>
+        
+    </ul>
+
+<div class="tab-content">
+  <div id="sectionA" class="tab-pane fade in active">
+    <div class="page-header">
+
+    <h1 class="titulo">Artigos Públicos</h1>
+    </div>
+      
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Pasta</th>
+          
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @examples_public.each do |example| %>
+          <div class="link_too">    
+          <tr>
+            <td class="td-index"><%= link_to example.name, example %></td>
+            <td><%= example.folder.name %></td>
+            
+          </tr>
+          
+          </div>
+        <% end %>
+        <br>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= will_paginate @examples_public, renderer: BootstrapPagination::Rails %>
+  </div>
+  <div id="sectionB" class="tab-pane fade">
+    <div class="page-header">
+<h1 class="titulo">Artigos Privados</h1>
 </div>
 
-  
-  
 <table class="table">
   <thead>
     <tr>
@@ -15,15 +55,27 @@
   </thead>
 
   <tbody>
-    <% @examples.each do |example| %>
-      <div class="link_too"    
-      <tr>
-        <td class="td-index"><%= link_to example.name, example %></td>
-        <td><%= example.folder.name %></td>
+    <% @example_privates.each do |example| %>
+
+      <% @folder = Folder.where(user_id: current_user.id) %>
+
+        <% @folder.each do |fold| %>
+
+          <% if fold.id==example.folder_id %>
+
+            <div class="link_too">    
+                <tr>
+                  <td class="td-index"><%= link_to example.name, example %></td>
+                  <td><%= example.folder.name %></td>
+                  
+                </tr>
         
-      </tr>
-      
-      </div>
+            </div>
+
+          <% end %>
+
+        <% end %>
+
     <% end %>
     <br>
   </tbody>
@@ -31,8 +83,13 @@
 
 <br>
 
-<%= will_paginate @examples, renderer: BootstrapPagination::Rails %>
+<%= will_paginate @example_privates, renderer: BootstrapPagination::Rails %>
+
 </div>
 
-
+</div>
+  </div>
+</div>
+<br>
+<br>
 
