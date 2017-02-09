@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   resources :examples
   root :to => redirect('/examples')
+
+  #Rota para criar novo arquivo na pasta determinada
+  get 'examples/novo/:id' => 'examples#new', as: :new_exemples_folder
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

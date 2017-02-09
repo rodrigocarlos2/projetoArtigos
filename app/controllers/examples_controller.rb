@@ -18,6 +18,10 @@ class ExamplesController < ApplicationController
   # GET /examples/new
   def new
     @example = Example.new
+    #verifica se existe um parametro para ser passado no folder_id
+    if !params[:id].nil?
+    @example.folder_id = params[:id]
+    end
   end
 
   # GET /examples/1/edit
@@ -29,13 +33,18 @@ class ExamplesController < ApplicationController
   def create
     @example = Example.new(example_params)
     @example.my_file = params[:file]
+
     respond_to do |format|
-      if @example.save
-        format.html { redirect_to @example, notice: 'Example was successfully created.' }
-        format.json { render :show, status: :created, location: @example }
+      if @example.folder_id.nil?
+        format.html { redirect_to root_url, alert: 'Cadastre uma pasta antes de inserir um arquivo.' }
       else
-        format.html { render :new }
-        format.json { render json: @example.errors, status: :unprocessable_entity }
+        if @example.save
+          format.html { redirect_to @example, notice: 'Operação realizada com sucesso.' }
+          format.json { render :show, status: :created, location: @example }
+        else
+          format.html { render :new }
+          format.json { render json: @example.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -45,7 +54,7 @@ class ExamplesController < ApplicationController
   def update
     respond_to do |format|
       if @example.update(example_params)
-        format.html { redirect_to @example, notice: 'Example was successfully updated.' }
+        format.html { redirect_to @example, notice: 'Operação realizada com sucesso.' }
         format.json { render :show, status: :ok, location: @example }
       else
         format.html { render :edit }
@@ -59,7 +68,7 @@ class ExamplesController < ApplicationController
   def destroy
     @example.destroy
     respond_to do |format|
-      format.html { redirect_to examples_url, notice: 'Example was successfully destroyed.' }
+      format.html { redirect_to examples_url, notice: 'Operação realizada com sucesso.' }
       format.json { head :no_content }
     end
   end
