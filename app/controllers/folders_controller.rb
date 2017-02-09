@@ -5,18 +5,26 @@ class FoldersController < ApplicationController
   # GET /folders
   # GET /folders.json
   def index
+    #Cria uma pesquisa com ransack, caso não tenha nenhuma pesquisa ele retorna
+    #todos os registros
     @q = Folder.ransack(params[:q])
     @folders = @q.result
+    #Pega as pastas que pertencem ao usuario logado
     @folders = @folders.where(user_id: current_user.id)
+    #Utilização do will_paginate
     @folders = @folders.paginate(:page => params[:page], :per_page => 20)
   end
 
   # GET /folders/1
   # GET /folders/1.json
   def show
+    #Cria uma pesquisa com ransack, caso não tenha nenhuma pesquisa ele retorna
+    #todos os artigos da pasta
     @q = Example.ransack(params[:q])
     @examples = @q.result
+    #Filtra os artigos pela pasta
     @examples = @examples.where(folder_id: params[:id])
+    #Utilização do will_paginate
     @examples = @examples.paginate(:page => params[:page], :per_page => 20)
   end
 
