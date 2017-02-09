@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Folder Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Folder Name</th>
+      <th>User E-mail</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @folder_users.each do |folder_user| %>
+      <tr>
+        <td><%= folder_user.folder.name %></td>
+        <td><%= folder_user.user.email %></td>
+        <td><%= link_to 'Show', folder_user %></td>
+        <td><%= link_to 'Edit', edit_folder_user_path(folder_user) %></td>
+        <td><%= link_to 'Destroy', folder_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Folder user', new_folder_user_path %>

@@ -1,0 +1,1 @@
+json.array! @folder_users, partial: 'folder_users/folder_user', as: :folder_user

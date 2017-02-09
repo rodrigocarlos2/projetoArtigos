@@ -1,0 +1,1 @@
+json.partial! "folder_users/folder_user", folder_user: @folder_user
