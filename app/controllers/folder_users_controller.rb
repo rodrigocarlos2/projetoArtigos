@@ -26,8 +26,7 @@ class FolderUsersController < ApplicationController
   # POST /folder_users.json
   def create
     @folder_user = FolderUser.new
-    user = params['user']
-    @user = User.where(:email => user['email'])
+    @user = User.find_by_email(params['user']['email'])
     @folder_user.user_id = @user.id
     @folder_user.folder_id = params[:folder_id]
 

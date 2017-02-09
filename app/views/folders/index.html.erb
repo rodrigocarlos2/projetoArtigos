@@ -34,11 +34,10 @@
             <h2>Adicionar E-mails</h2>
             <%= form_tag("/folder_users", method: "post") do %>
             
-            <%= email_field(:user,:email) %>
+            <%= text_field(:user,:email) %>
             <%= hidden_field_tag(:folder_id,folder.id) %>
             <%= submit_tag("Adicionar") %>
             <% end %>
-            
             
           </div>
         </div>
