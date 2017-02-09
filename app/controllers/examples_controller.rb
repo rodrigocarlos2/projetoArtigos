@@ -44,6 +44,7 @@ class ExamplesController < ApplicationController
     @example.my_file = params[:file]
 
     respond_to do |format|
+      #Verifica se existe pasta criada
       if @example.folder_id.nil?
         format.html { redirect_to root_url, alert: 'Cadastre uma pasta antes de inserir um arquivo.' }
       else

@@ -37,12 +37,15 @@ class FolderUsersController < ApplicationController
 
 
     respond_to do |format|
+      #Verifica se o email digitado é iqual ao do usuario logado
       if @folder_user.user_id==current_user.id
         format.html { redirect_to folders_url, alert: 'Você digitou seu proprio E-mail.' }
       else
+        #Verifica se existe usuario com o email passado no parametro
         if @user.empty?
           format.html { redirect_to folders_url, alert: 'Email não existe.' }
         else
+          #Pega o id do usuario do email passado no parametro 
           @folder_user.user_id = @user.first.id
           if @folder_user.save
             format.html { redirect_to folders_url, notice: 'Operação realizada com sucesso.' }
