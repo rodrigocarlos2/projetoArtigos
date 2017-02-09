@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Folder:</strong>
+  <%= @folder_user.folder %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @folder_user.user %>
+</p>
+
+<%= link_to 'Edit', edit_folder_user_path(@folder_user) %> |
+<%= link_to 'Back', folder_users_path %>
