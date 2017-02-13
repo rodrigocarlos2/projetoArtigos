@@ -1,5 +1,5 @@
 Given(/^I am on the home page$/) do
-  visit 'examples'
+  visit 'examples/novo/1'
 end
 
 Given(/^I am authenticated$/) do
@@ -9,7 +9,7 @@ Given(/^I am authenticated$/) do
 end
 
 When(/^I follw "([^"]*)"$/) do |link|
-  click_on(link)
+  click_button "Criar"
 end
 
 When(/^I fill in the fields$/) do
