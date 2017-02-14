@@ -1,5 +1,5 @@
 Given(/^I am on the home page$/) do
-  visit 'examples/novo/1'
+  visit new_example_path
 end
 
 Given(/^I am authenticated$/) do
@@ -8,8 +8,15 @@ Given(/^I am authenticated$/) do
   click_button 'Entrar'
 end
 
-When(/^I follw "([^"]*)"$/) do |link|
-  click_button "Criar"
+Given /^I visit the new example page$/ do
+	visit new_example_path
+end
+ 
+When /^I fill the new example form$/ do
+	click_button 'New'
+end
+ 
+When /^click on the 'Create' button$/ do
 end
 
 When(/^I fill in the fields$/) do

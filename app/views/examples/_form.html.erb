@@ -1,5 +1,6 @@
 <div class="row">
 <div class="col-sm-5">
+
 <%= form_for(@example) do |f| %>
   
   <% if @example.errors.any? %>
@@ -33,7 +34,8 @@
       <%= f.label :private %>
       <%= f.check_box :private %>
   </div>
-    <%= f.submit "Criar", id: "Criar" class: "btn btn-success" %>
+
+    <%= f.submit class: "btn btn-success" %>
   
 <% end %>
 </div>
