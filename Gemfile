@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.3.3'
+
 gem 'ransack'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
@@ -14,6 +16,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+
+gem 'rails_12factor'
+
 gem 'carrierwave'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
