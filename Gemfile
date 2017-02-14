@@ -17,6 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'carrierwave'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
+gem 'thin'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 
